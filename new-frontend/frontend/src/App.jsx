@@ -9,8 +9,14 @@ import RegistrationPage from './pages/RegistrationPage';
 // import DashboardLearn from './components/DashboardLearn'; //for learning 
 
 import FetchData from './components/FetchData';
+import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-
+import Login from "./pages/Login";
+import HomePage from "./pages/HomePage";
+import DashboardPage from "./pages/DashboardPage";
+import RegistrationPage from "./pages/RegistrationPage";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   return (
@@ -25,14 +31,35 @@ function App() {
           <Route path="/" element={<HomePage />} /> 
           <Route path="/dashboard/:id" element={<DashboardPage />} />
           <Route path="/register" element={<RegistrationPage />} />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
-                  
-        </Routes>
-      </div>
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <HomePage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/:id"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <DashboardPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 }
-
-
 
 export default App;
