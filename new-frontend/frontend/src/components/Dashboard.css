@@ -515,6 +515,9 @@ ul {
 
   .chart-container > * {
     width: 100%;
+  }
+}
+
 .dashboard-page {
   max-width: 1180px;
   margin: 0 auto;
